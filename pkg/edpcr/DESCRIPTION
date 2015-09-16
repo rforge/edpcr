@@ -1,0 +1,15 @@
+Package: edpcr
+Type: Package
+Title: Performs Extended Digital PCR Analysis
+Version: 0.9
+Date: 2015-08-17
+Author: Philip Wilson
+Maintainer: Philip Wilson <philip.wilson@lgcgroup.com>
+Description: This package is based on a (currently unpublished) algorithm for analysing quantification cycle (Cq) data from digital PCR (dPCR) experiements. This method uses the Conway Maxwell Poisson distribution for the initial distribution of molecules. The package includes functions for extracting, simulating and preparing data for analysis, performing the analysis to find the posterior mode (or maximum likelihood estimate if priors are not used) and/or simulate a posterior sample using MCMC, and plotting data and results.
+License: GPL-3
+Imports:
+	robust,
+	coda,
+	MCMCpack,
+	compoisson
+LazyData: true
