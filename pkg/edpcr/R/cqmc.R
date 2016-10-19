@@ -1,11 +1,20 @@
 cqmc<-
-function(data,mc.rep=10^4,h=NULL,n0=NULL,n1=NULL,nt0=0,nt1=0,n.lo=0,n.hi=0,
+function(data,mc.rep=10^4,h=NULL,
+ n0=NULL,n1=NULL,
+ nt0=0,nt1=0,n.lo=0,n.hi=0,
  pars0=NULL,report=1,probreport=.1,
- extra=c("trendx","trendy","disp","E1"),c0=6,maxn0=7,mod.method="Nelder-Mead",
- mod.rep=2000,burnin=0,nreport=10,cq.xlim=NA,
- tune=1,E1.init=.8,E.init=.9,d.init=1,prior=TRUE,
- mu.fun=function(x) dgamma(x,1.5,1.5), A.fun=function(x) x^-1,E.fun=function(x) dbeta(x,60,5),
- E1.fun=E.fun,trendx.fun=function(x) 1,trendy.fun=function(x) 1,disp.fun=function(x) dgamma(x,10,10)) {
+ extra=c("trendx","trendy","disp","E1"),
+ c0=6,maxn0=7,
+ mod.method="Nelder-Mead",mod.rep=2000,
+ burnin=0,nreport=10,cq.xlim=NA,tune=1,
+ E1.init=.8,E.init=.9,d.init=1,
+ prior=TRUE,
+ mu.fun=function(x) dgamma(x,1.5,1.5), 
+ A.fun=function(x) x^-1,
+ E.fun=function(x) dbeta(x,60,5),
+ E1.fun=E.fun,
+ trendx.fun=function(x) 1,trendy.fun=function(x) 1,
+ disp.fun=function(x) dgamma(x,10,10)) {
   
 
   if (!prior) mu.fun<-A.fun<-E.fun<-E1.fun<-trendx.fun<-trendy.fun<-disp.fun<-function(x) 1

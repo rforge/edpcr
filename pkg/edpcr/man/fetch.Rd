@@ -99,10 +99,10 @@ with(data.frame(fetch(Exp37a,panel=1,raw=TRUE)),plot(x,cq))
 \dontrun{
 
 # Extract data from a named tab-delimited file
-dat<-fetch("dpcr.txt",sep"\t",panel=1)
+dat<-fetch("dpcr.txt",sep="\t",panel=1)
 
 # Extract data from a named comma separated values file
-dat<-fetch("dpcr.csv",sep",",panel=1)
+dat<-fetch("dpcr.csv",sep=",",panel=1)
 
 
 # Select panel indirectly. Select negative partitions

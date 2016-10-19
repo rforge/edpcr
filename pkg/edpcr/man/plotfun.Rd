@@ -12,7 +12,7 @@ plotfun(pars = NULL, h = 0.1, xlim = NULL,
   dxlim = c(-3, 2.5), new = TRUE, npoints = 10^3, 
   c0 = 6, maxn0 = 7, inc0 = TRUE, type = 0, 
   xlab = expression("C"["q"]), ylab = "density", 
-  col = "blue", ...)
+  col = "black", ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

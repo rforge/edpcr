@@ -1,7 +1,7 @@
 fetch <-
 function(data=NULL,panel=NA,dir=NULL,sep="\t",skip=11,header=TRUE,check.names=FALSE,cq.xlim=NA,out=c(3.5,5),
                 cols=NULL,vals=NULL,Rep=NA,
-                colx="Chamber.ID",coly="Chamber.ID",colpan="Panel.ID",colcq="Value",
+                colx="Chamber ID",coly="Chamber ID",colpan="Panel ID",colcq="Value",
                 colh="Threshold",colfail="Call",
                 funx=function(x) substr(x,6, 7),funy=function(x) substr(x,10,11),
                 funfail=function(x) x=="Fail",h=NA,raw=FALSE) {

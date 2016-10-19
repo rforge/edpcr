@@ -14,7 +14,7 @@ cqmc(data, mc.rep = 10^4, h = NULL,
   pars0 = NULL, report = 1, probreport = 0.1, 
   extra = c("trendx", "trendy", "disp", "E1"), 
   c0 = 6, maxn0 = 7, 
-  mod.method = "Nelder-Mead", full = FALSE, mod.rep = 2000, 
+  mod.method = "Nelder-Mead", mod.rep = 2000, 
   burnin = 0, nreport = 10, cq.xlim = NA, tune = 1, 
   E1.init = 0.8, E.init = 0.9, d.init = 1, 
   prior = TRUE, 
@@ -22,7 +22,7 @@ cqmc(data, mc.rep = 10^4, h = NULL,
   A.fun = function(x) x^-1, 
   E.fun = function(x) dbeta(x, 60, 5), 
   E1.fun = E.fun, 
-  trendx.fun = function(x) 1, trendy.fun = trendx.fun, 
+  trendx.fun = function(x) 1, trendy.fun = function(x) 1, 
   disp.fun = function(x) dgamma(x, 10, 10))
 }
 %- maybe also 'usage' for other objects documented here.
@@ -38,12 +38,6 @@ Threshold value
 }
   \item{n0, n1, nt0, nt1, n.lo, n.hi}{
 integer counts of the negative partitions (\code{n0}), positive partitions (\code{n1}), number of trimmed negative partitions (\code{nt0}), trimmed positive partitions (\code{nt1}), low outliers (\code{n.lo}) and high outliers (\code{n.hi}). Not needed if data is \code{cqdat} object.
-}
-  \item{mc}{
-logical. Whether or not to simulate MCMC sample.
-}
-  \item{mod}{
-logical. Whether or not to find mode and if mc is \code{TRUE} to use the mode as the MCMC initial value.
 }
   \item{pars0}{
 initial model parameter values
@@ -99,7 +93,7 @@ This function can be used to find the posterior mode using \code{link{optim}} an
 
 The mode found for a particular set of initial paramemeters may not be the global maximum. For this reason it is recommended to search from a number combinations of \eqn{E} and \eqn{E_1}{E1} set through the vectors \code{E.init} and \code{E1.init}.
 
-If \code{report>0} then "." is printed when the posterior is calculated as 0 (due to computational limitations). If \code{report>0} and \code{probreport>0} then "'" is printed with probability \code{probreport} when a non-zero posterior is calculated. If \code{optim} fails to find non-zero posteriors, and thus fails to work then a better initial value may be required. Similarly if there are fewIt is also possible that setting \code{full} to \code{TRUE} may solve the problem.
+If \code{report>0} then "." is printed when the posterior is calculated as 0 (due to computational limitations). If \code{report>0} and \code{probreport>0} then "'" is printed with probability \code{probreport} when a non-zero posterior is calculated. If \code{optim} fails to find non-zero posteriors, and thus fails to work then a better initial value may be required.
 }
 \value{
 A list with components:
@@ -128,14 +122,15 @@ Also included if \code{mc} is \code{TRUE}:
 Philip Wilson
 }
 \examples{
+
+\dontrun{
+# These examples take some time to run.
+
 dat<-fetch(Exp37a,panel=1)
 # Estimate posterior mode for single intitial parameter vector
 res1<-cqmc(dat,mc.rep=0,E.init=.9,E1.init=.8,probreport=.1)
 
 res2<-cqmc(dat,mod.rep=10^3,mc.rep=10^3,E.init=.9,E1.init=c(.5,.7,.9),probreport=.1)
-
-\dontrun{
-# This example takes some time to run. 
 # Estimate posterior mode from 9 initial parameter vectors. 
 # Simulate MCMC sample from posterior distribution 
 #  using estimated mode as initial value.

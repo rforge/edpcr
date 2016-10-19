@@ -13,11 +13,11 @@ llcq(mpars, data = fetch(2, 1), maxn0 = 7, c0 = 6,
   h = 0.1, n0 = 300, n1 = 465,
   nt0 = 0, nt1 = 0, n.lo = 0, n.hi = 0, 
   nx = 0, ny = 0, 
-  full = FALSE, delta = 1e-05, sum. = TRUE, 
+  full = TRUE, delta = 1e-05, sum. = TRUE, 
   report = 0, probreport = 0, prior = FALSE, 
   mu.fun = function(mu) 1, A.fun = function(A) 1, 
   E.fun = function(E) 1, E1.fun = function(E1) 1, 
-  trendx.fun = function(x) 1, trendy.fun = trendx.fun, 
+  trendx.fun = function(x) 1, trendy.fun = function(y) 1, 
   disp.fun = function(d) 1, prior.funs = NULL, 
   invisible = FALSE)
 }

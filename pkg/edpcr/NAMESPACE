@@ -1,1 +1,8 @@
 exportPattern("^[[:alpha:]]+")
+  importFrom("graphics", "legend", "lines", "par", "plot", "points",
+             "title")
+  importFrom("stats", "dbeta", "dbinom", "density", "dgamma", "dpois",
+             "optim", "optimHess", "pnorm", "rbinom", "resid", "runif",
+             "uniroot")
+  importFrom("utils", "read.table")
+  
